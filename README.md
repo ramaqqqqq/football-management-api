@@ -64,13 +64,22 @@ make deps
 
 # Run the application
 make run
+# or manually
+go run cmd/main.go
 
 # Database migrations
-make migrate.up        
-make migrate.rollback  
+make migrate.up
+# or manually
+go run migration/main/main.go up
+
+make migrate.rollback
+# or manually
+go run migration/main/main.go rollback
 
 # Regenerate Swagger docs (requires swag CLI installed)
 make docs-update
+# or manually
+$(go env GOPATH)/bin/swag init -g cmd/main.go -o swagger/v1 --ot go,json,yaml --pd true
 ```
 
 ## Setup Instructions
@@ -135,7 +144,11 @@ make migrate.up
 ### 6. Jalankan aplikasi
 
 ```bash
+# Menggunakan Makefile
 make run
+
+# Manual
+go run cmd/main.go
 ```
 
 Server berjalan di `http://localhost:8080`
