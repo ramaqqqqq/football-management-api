@@ -1,0 +1,98 @@
+{
+  "err_bad_request_title": {
+    "other": "Bad Request"
+  },
+  "err_bad_request_message": {
+    "other": "Invalid request parameters"
+  },
+  "err_unauthorized_title": {
+    "other": "Unauthorized"
+  },
+  "err_unauthorized_message": {
+    "other": "Not authorized"
+  },
+  "err_internal_server_title": {
+    "other": "Server Error"
+  },
+  "err_internal_server_message": {
+    "other": "Failed to process request, please try again in a moment."
+  },
+  "err_invalid_credentials_title": {
+    "other": "Invalid Email or Password"
+  },
+  "err_invalid_credentials_message": {
+    "other": "The email or password you entered is incorrect"
+  },
+  "err_email_already_exists_title": {
+    "other": "Email Already Exists"
+  },
+  "err_email_already_exists_message": {
+    "other": "The email is already registered, please login"
+  },
+  "err_invalid_token_title": {
+    "other": "Invalid Token"
+  },
+  "err_invalid_token_message": {
+    "other": "The token provided is invalid"
+  },
+  "err_forbidden_title": {
+    "other": "Access Denied"
+  },
+  "err_forbidden_message": {
+    "other": "You don't have permission to access this resource"
+  },
+  "err_validation_failed_title": {
+    "other": "Validation Failed"
+  },
+  "err_validation_failed_message": {
+    "other": "The data sent is invalid"
+  },
+  "err_invalid_request_title": {
+    "other": "Invalid Request"
+  },
+  "err_invalid_request_message": {
+    "other": "The request sent is invalid"
+  },
+  "err_team_not_found_title": {
+    "other": "Team Not Found"
+  },
+  "err_team_not_found_message": {
+    "other": "The team you are looking for was not found"
+  },
+  "err_player_not_found_title": {
+    "other": "Player Not Found"
+  },
+  "err_player_not_found_message": {
+    "other": "The player you are looking for was not found"
+  },
+  "err_jersey_number_taken_title": {
+    "other": "Jersey Number Already Taken"
+  },
+  "err_jersey_number_taken_message": {
+    "other": "This jersey number is already used by another player in the same team"
+  },
+  "err_match_not_found_title": {
+    "other": "Match Not Found"
+  },
+  "err_match_not_found_message": {
+    "other": "The match you are looking for was not found"
+  },
+  "err_match_already_has_result_title": {
+    "other": "Match Already Has Result"
+  },
+  "err_match_already_has_result_message": {
+    "other": "This match already has a result recorded"
+  },
+  "err_match_not_completed_title": {
+    "other": "Match Not Completed"
+  },
+  "err_match_not_completed_message": {
+    "other": "This match has not been completed yet"
+  },
+  "err_same_team_match_title": {
+    "other": "Invalid Match"
+  },
+  "err_same_team_match_message": {
+    "other": "Home team and away team cannot be the same"
+  }
+}

@@ -1,0 +1,980 @@
+basePath: /
+definitions:
+  go-test_lib_middleware_gin.Action:
+    properties:
+      next_state:
+        type: string
+    type: object
+  go-test_lib_middleware_gin.Error:
+    properties:
+      action:
+        $ref: '#/definitions/go-test_lib_middleware_gin.Action'
+      code:
+        type: string
+      message:
+        type: string
+      message_severity:
+        type: string
+      message_title:
+        type: string
+    type: object
+  go-test_lib_middleware_gin.Meta:
+    properties:
+      request_id:
+        type: string
+    type: object
+  go-test_lib_middleware_gin.Response:
+    properties:
+      data: {}
+      error:
+        $ref: '#/definitions/go-test_lib_middleware_gin.Error'
+      metadata:
+        $ref: '#/definitions/go-test_lib_middleware_gin.Meta'
+      success:
+        type: boolean
+    type: object
+  go-test_src_v1_contract.AuthResponse:
+    properties:
+      token:
+        type: string
+    type: object
+  go-test_src_v1_contract.CreateMatchRequest:
+    properties:
+      away_team_id:
+        type: integer
+      home_team_id:
+        type: integer
+      match_date:
+        description: YYYY-MM-DD
+        type: string
+      match_time:
+        description: HH:MM
+        type: string
+    required:
+    - away_team_id
+    - home_team_id
+    - match_date
+    - match_time
+    type: object
+  go-test_src_v1_contract.CreatePlayerRequest:
+    properties:
+      height:
+        type: number
+      jersey_number:
+        maximum: 99
+        minimum: 1
+        type: integer
+      name:
+        type: string
+      position:
+        enum:
+        - penyerang
+        - gelandang
+        - bertahan
+        - penjaga_gawang
+        type: string
+      team_id:
+        type: integer
+      weight:
+        type: number
+    required:
+    - height
+    - jersey_number
+    - name
+    - position
+    - team_id
+    - weight
+    type: object
+  go-test_src_v1_contract.GoalDetail:
+    properties:
+      goal_minute:
+        type: integer
+      id:
+        type: integer
+      player_id:
+        type: integer
+      player_name:
+        type: string
+    type: object
+  go-test_src_v1_contract.GoalInput:
+    properties:
+      goal_minute:
+        maximum: 120
+        minimum: 1
+        type: integer
+      player_id:
+        type: integer
+    required:
+    - goal_minute
+    - player_id
+    type: object
+  go-test_src_v1_contract.LoginRequest:
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+    required:
+    - email
+    - password
+    type: object
+  go-test_src_v1_contract.MatchReportResponse:
+    properties:
+      away_score:
+        type: integer
+      away_team:
+        $ref: '#/definitions/go-test_src_v1_contract.TeamBrief'
+      away_team_total_wins:
+        type: integer
+      final_status:
+        type: string
+      goals:
+        items:
+          $ref: '#/definitions/go-test_src_v1_contract.GoalDetail'
+        type: array
+      home_score:
+        type: integer
+      home_team:
+        $ref: '#/definitions/go-test_src_v1_contract.TeamBrief'
+      home_team_total_wins:
+        type: integer
+      match_date:
+        type: string
+      match_id:
+        type: integer
+      match_time:
+        type: string
+      top_scorer:
+        $ref: '#/definitions/go-test_src_v1_contract.TopScorerInfo'
+    type: object
+  go-test_src_v1_contract.MatchResponse:
+    properties:
+      away_score:
+        type: integer
+      away_team:
+        $ref: '#/definitions/go-test_src_v1_contract.TeamBrief'
+      created_at:
+        type: string
+      goals:
+        items:
+          $ref: '#/definitions/go-test_src_v1_contract.GoalDetail'
+        type: array
+      home_score:
+        type: integer
+      home_team:
+        $ref: '#/definitions/go-test_src_v1_contract.TeamBrief'
+      id:
+        type: integer
+      match_date:
+        type: string
+      match_time:
+        type: string
+      status:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  go-test_src_v1_contract.PlayerResponse:
+    properties:
+      created_at:
+        type: string
+      height:
+        type: number
+      id:
+        type: integer
+      jersey_number:
+        type: integer
+      name:
+        type: string
+      position:
+        type: string
+      team_id:
+        type: integer
+      updated_at:
+        type: string
+      weight:
+        type: number
+    type: object
+  go-test_src_v1_contract.RegisterRequest:
+    properties:
+      email:
+        type: string
+      name:
+        type: string
+      password:
+        minLength: 8
+        type: string
+    required:
+    - email
+    - name
+    - password
+    type: object
+  go-test_src_v1_contract.SubmitResultRequest:
+    properties:
+      away_score:
+        minimum: 0
+        type: integer
+      goals:
+        items:
+          $ref: '#/definitions/go-test_src_v1_contract.GoalInput'
+        type: array
+      home_score:
+        minimum: 0
+        type: integer
+    type: object
+  go-test_src_v1_contract.TeamBrief:
+    properties:
+      id:
+        type: integer
+      logo:
+        type: string
+      name:
+        type: string
+    type: object
+  go-test_src_v1_contract.TeamResponse:
+    properties:
+      address:
+        type: string
+      city:
+        type: string
+      created_at:
+        type: string
+      id:
+        type: integer
+      logo:
+        type: string
+      name:
+        type: string
+      updated_at:
+        type: string
+      year_founded:
+        type: integer
+    type: object
+  go-test_src_v1_contract.TopScorerInfo:
+    properties:
+      goals:
+        type: integer
+      name:
+        type: string
+      player_id:
+        type: integer
+    type: object
+  go-test_src_v1_contract.UpdateMatchRequest:
+    properties:
+      away_team_id:
+        type: integer
+      home_team_id:
+        type: integer
+      match_date:
+        type: string
+      match_time:
+        type: string
+    type: object
+  go-test_src_v1_contract.UpdatePlayerRequest:
+    properties:
+      height:
+        type: number
+      jersey_number:
+        maximum: 99
+        minimum: 1
+        type: integer
+      name:
+        type: string
+      position:
+        enum:
+        - penyerang
+        - gelandang
+        - bertahan
+        - penjaga_gawang
+        type: string
+      team_id:
+        type: integer
+      weight:
+        type: number
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: REST API for managing football teams, players, and matches
+  title: Football Management API
+  version: "1.0"
+paths:
+  /v1/auth/login:
+    post:
+      consumes:
+      - application/json
+      description: Login with email and password
+      parameters:
+      - description: login request
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/go-test_src_v1_contract.LoginRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/go-test_lib_middleware_gin.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/go-test_src_v1_contract.AuthResponse'
+              type: object
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/go-test_lib_middleware_gin.Response'
+      summary: Login user
+      tags:
+      - auth
+  /v1/auth/register:
+    post:
+      consumes:
+      - application/json
+      description: Register a new user account
+      parameters:
+      - description: register request
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/go-test_src_v1_contract.RegisterRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            allOf:
+            - $ref: '#/definitions/go-test_lib_middleware_gin.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/go-test_src_v1_contract.AuthResponse'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/go-test_lib_middleware_gin.Response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/go-test_lib_middleware_gin.Response'
+      summary: Register user
+      tags:
+      - auth
+  /v1/matches:
+    get:
+      description: Get list of all matches
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/go-test_lib_middleware_gin.Response'
+            - properties:
+                data:
+                  items:
+                    $ref: '#/definitions/go-test_src_v1_contract.MatchResponse'
+                  type: array
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/go-test_lib_middleware_gin.Response'
+      security:
+      - BearerAuth: []
+      summary: Get all matches
+      tags:
+      - matches
+    post:
+      consumes:
+      - application/json
+      description: Create a new match schedule between two teams
+      parameters:
+      - description: create match request
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/go-test_src_v1_contract.CreateMatchRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            allOf:
+            - $ref: '#/definitions/go-test_lib_middleware_gin.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/go-test_src_v1_contract.MatchResponse'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/go-test_lib_middleware_gin.Response'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/go-test_lib_middleware_gin.Response'
+      security:
+      - BearerAuth: []
+      summary: Create match
+      tags:
+      - matches
+  /v1/matches/{id}:
+    delete:
+      description: Soft delete a match and its goals by ID
+      parameters:
+      - description: match ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/go-test_lib_middleware_gin.Response'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/go-test_lib_middleware_gin.Response'
+      security:
+      - BearerAuth: []
+      summary: Delete match
+      tags:
+      - matches
+    get:
+      description: Get a match by its ID including goals
+      parameters:
+      - description: match ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/go-test_lib_middleware_gin.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/go-test_src_v1_contract.MatchResponse'
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/go-test_lib_middleware_gin.Response'
+      security:
+      - BearerAuth: []
+      summary: Get match by ID
+      tags:
+      - matches
+    put:
+      consumes:
+      - application/json
+      description: Update a match schedule by ID (only scheduled matches can be updated)
+      parameters:
+      - description: match ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: update match request
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/go-test_src_v1_contract.UpdateMatchRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/go-test_lib_middleware_gin.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/go-test_src_v1_contract.MatchResponse'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/go-test_lib_middleware_gin.Response'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/go-test_lib_middleware_gin.Response'
+      security:
+      - BearerAuth: []
+      summary: Update match
+      tags:
+      - matches
+  /v1/matches/{id}/report:
+    get:
+      description: Get detailed match report including top scorer and team win statistics
+      parameters:
+      - description: match ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/go-test_lib_middleware_gin.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/go-test_src_v1_contract.MatchReportResponse'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/go-test_lib_middleware_gin.Response'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/go-test_lib_middleware_gin.Response'
+      security:
+      - BearerAuth: []
+      summary: Get match report
+      tags:
+      - matches
+  /v1/matches/{id}/result:
+    post:
+      consumes:
+      - application/json
+      description: Submit final score and goals for a match
+      parameters:
+      - description: match ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: submit result request
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/go-test_src_v1_contract.SubmitResultRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/go-test_lib_middleware_gin.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/go-test_src_v1_contract.MatchResponse'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/go-test_lib_middleware_gin.Response'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/go-test_lib_middleware_gin.Response'
+      security:
+      - BearerAuth: []
+      summary: Submit match result
+      tags:
+      - matches
+  /v1/players:
+    get:
+      description: Get list of all players
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/go-test_lib_middleware_gin.Response'
+            - properties:
+                data:
+                  items:
+                    $ref: '#/definitions/go-test_src_v1_contract.PlayerResponse'
+                  type: array
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/go-test_lib_middleware_gin.Response'
+      security:
+      - BearerAuth: []
+      summary: Get all players
+      tags:
+      - players
+    post:
+      consumes:
+      - application/json
+      description: Create a new player and assign to a team
+      parameters:
+      - description: create player request
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/go-test_src_v1_contract.CreatePlayerRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            allOf:
+            - $ref: '#/definitions/go-test_lib_middleware_gin.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/go-test_src_v1_contract.PlayerResponse'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/go-test_lib_middleware_gin.Response'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/go-test_lib_middleware_gin.Response'
+      security:
+      - BearerAuth: []
+      summary: Create player
+      tags:
+      - players
+  /v1/players/{id}:
+    delete:
+      description: Soft delete a player by ID
+      parameters:
+      - description: player ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/go-test_lib_middleware_gin.Response'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/go-test_lib_middleware_gin.Response'
+      security:
+      - BearerAuth: []
+      summary: Delete player
+      tags:
+      - players
+    get:
+      description: Get a player by their ID
+      parameters:
+      - description: player ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/go-test_lib_middleware_gin.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/go-test_src_v1_contract.PlayerResponse'
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/go-test_lib_middleware_gin.Response'
+      security:
+      - BearerAuth: []
+      summary: Get player by ID
+      tags:
+      - players
+    put:
+      consumes:
+      - application/json
+      description: Update a player by ID
+      parameters:
+      - description: player ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: update player request
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/go-test_src_v1_contract.UpdatePlayerRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/go-test_lib_middleware_gin.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/go-test_src_v1_contract.PlayerResponse'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/go-test_lib_middleware_gin.Response'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/go-test_lib_middleware_gin.Response'
+      security:
+      - BearerAuth: []
+      summary: Update player
+      tags:
+      - players
+  /v1/teams:
+    get:
+      description: Get list of all football teams
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/go-test_lib_middleware_gin.Response'
+            - properties:
+                data:
+                  items:
+                    $ref: '#/definitions/go-test_src_v1_contract.TeamResponse'
+                  type: array
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/go-test_lib_middleware_gin.Response'
+      security:
+      - BearerAuth: []
+      summary: Get all teams
+      tags:
+      - teams
+    post:
+      consumes:
+      - multipart/form-data
+      description: Create a new football team
+      parameters:
+      - description: team name
+        in: formData
+        name: name
+        required: true
+        type: string
+      - description: logo image
+        in: formData
+        name: logo
+        type: file
+      - description: year founded (1800-2100)
+        in: formData
+        name: year_founded
+        required: true
+        type: integer
+      - description: team address
+        in: formData
+        name: address
+        type: string
+      - description: team city
+        in: formData
+        name: city
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            allOf:
+            - $ref: '#/definitions/go-test_lib_middleware_gin.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/go-test_src_v1_contract.TeamResponse'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/go-test_lib_middleware_gin.Response'
+      security:
+      - BearerAuth: []
+      summary: Create team
+      tags:
+      - teams
+  /v1/teams/{id}:
+    delete:
+      description: Soft delete a football team by ID
+      parameters:
+      - description: team ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/go-test_lib_middleware_gin.Response'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/go-test_lib_middleware_gin.Response'
+      security:
+      - BearerAuth: []
+      summary: Delete team
+      tags:
+      - teams
+    get:
+      description: Get a football team by its ID
+      parameters:
+      - description: team ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/go-test_lib_middleware_gin.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/go-test_src_v1_contract.TeamResponse'
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/go-test_lib_middleware_gin.Response'
+      security:
+      - BearerAuth: []
+      summary: Get team by ID
+      tags:
+      - teams
+    put:
+      consumes:
+      - multipart/form-data
+      description: Update a football team by ID
+      parameters:
+      - description: team ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: team name
+        in: formData
+        name: name
+        type: string
+      - description: logo image
+        in: formData
+        name: logo
+        type: file
+      - description: year founded (1800-2100)
+        in: formData
+        name: year_founded
+        type: integer
+      - description: team address
+        in: formData
+        name: address
+        type: string
+      - description: team city
+        in: formData
+        name: city
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/go-test_lib_middleware_gin.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/go-test_src_v1_contract.TeamResponse'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/go-test_lib_middleware_gin.Response'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/go-test_lib_middleware_gin.Response'
+      security:
+      - BearerAuth: []
+      summary: Update team
+      tags:
+      - teams
+  /v1/teams/{id}/players:
+    get:
+      description: Get all players belonging to a specific team
+      parameters:
+      - description: team ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/go-test_lib_middleware_gin.Response'
+            - properties:
+                data:
+                  items:
+                    $ref: '#/definitions/go-test_src_v1_contract.PlayerResponse'
+                  type: array
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/go-test_lib_middleware_gin.Response'
+      security:
+      - BearerAuth: []
+      summary: Get players by team
+      tags:
+      - teams
+securityDefinitions:
+  BearerAuth:
+    description: Type "Bearer" followed by a space and the JWT token.
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

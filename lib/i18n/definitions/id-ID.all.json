@@ -1,0 +1,98 @@
+{
+  "err_bad_request_title": {
+    "other": "Permintaan Salah"
+  },
+  "err_bad_request_message": {
+    "other": "Parameter permintaan tidak valid"
+  },
+  "err_unauthorized_title": {
+    "other": "Tidak Diauthorisasi"
+  },
+  "err_unauthorized_message": {
+    "other": "Anda tidak memiliki akses ke sumber daya ini"
+  },
+  "err_internal_server_title": {
+    "other": "Terjadi Kesalahan"
+  },
+  "err_internal_server_message": {
+    "other": "Kami sedang mengalami masalah. Silakan coba lagi nanti"
+  },
+  "err_invalid_credentials_title": {
+    "other": "Email atau Password Salah"
+  },
+  "err_invalid_credentials_message": {
+    "other": "Email atau password yang dimasukkan salah"
+  },
+  "err_email_already_exists_title": {
+    "other": "Email Sudah Terdaftar"
+  },
+  "err_email_already_exists_message": {
+    "other": "Email sudah digunakan, silakan login"
+  },
+  "err_invalid_token_title": {
+    "other": "Token Tidak Valid"
+  },
+  "err_invalid_token_message": {
+    "other": "Token yang diberikan tidak valid"
+  },
+  "err_forbidden_title": {
+    "other": "Akses Ditolak"
+  },
+  "err_forbidden_message": {
+    "other": "Anda tidak memiliki izin untuk mengakses resource ini"
+  },
+  "err_validation_failed_title": {
+    "other": "Validasi Gagal"
+  },
+  "err_validation_failed_message": {
+    "other": "Data yang dikirim tidak valid"
+  },
+  "err_invalid_request_title": {
+    "other": "Permintaan Tidak Valid"
+  },
+  "err_invalid_request_message": {
+    "other": "Permintaan yang dikirim tidak valid"
+  },
+  "err_team_not_found_title": {
+    "other": "Tim Tidak Ditemukan"
+  },
+  "err_team_not_found_message": {
+    "other": "Tim yang dicari tidak ditemukan"
+  },
+  "err_player_not_found_title": {
+    "other": "Pemain Tidak Ditemukan"
+  },
+  "err_player_not_found_message": {
+    "other": "Pemain yang dicari tidak ditemukan"
+  },
+  "err_jersey_number_taken_title": {
+    "other": "Nomor Punggung Sudah Digunakan"
+  },
+  "err_jersey_number_taken_message": {
+    "other": "Nomor punggung ini sudah digunakan oleh pemain lain dalam tim yang sama"
+  },
+  "err_match_not_found_title": {
+    "other": "Pertandingan Tidak Ditemukan"
+  },
+  "err_match_not_found_message": {
+    "other": "Pertandingan yang dicari tidak ditemukan"
+  },
+  "err_match_already_has_result_title": {
+    "other": "Pertandingan Sudah Memiliki Hasil"
+  },
+  "err_match_already_has_result_message": {
+    "other": "Pertandingan ini sudah memiliki hasil yang dicatat"
+  },
+  "err_match_not_completed_title": {
+    "other": "Pertandingan Belum Selesai"
+  },
+  "err_match_not_completed_message": {
+    "other": "Pertandingan ini belum selesai"
+  },
+  "err_same_team_match_title": {
+    "other": "Pertandingan Tidak Valid"
+  },
+  "err_same_team_match_message": {
+    "other": "Tim tuan rumah dan tim tamu tidak boleh sama"
+  }
+}
